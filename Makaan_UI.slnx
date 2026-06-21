@@ -1,4 +1,5 @@
 <Solution>
+  <Project Path="Makaan_DAL/Makaan_DAL.csproj" />
   <Project Path="Makaan_Entity/Makaan_Entity.csproj" />
   <Project Path="Makaan_UI/Makaan_UI.csproj" />
 </Solution>
