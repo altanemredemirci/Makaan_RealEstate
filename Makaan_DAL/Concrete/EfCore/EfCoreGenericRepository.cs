@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using System.Text;
 
 namespace Makaan_DAL.Concrete.EfCore
@@ -28,11 +29,13 @@ namespace Makaan_DAL.Concrete.EfCore
             }
         }
 
-        public List<T> GetAll()
+        public List<T> GetAll(Expression<Func<T,bool>> filter)
         {
             using (var context = new TContext())
             {
-                return context.Set<T>().ToList();
+                return filter == null
+                    ? context.Set<T>().ToList()
+                    : context.Set<T>().Where(filter).ToList();
             }
         }
 

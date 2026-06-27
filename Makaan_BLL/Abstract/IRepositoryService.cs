@@ -1,14 +1,13 @@
-﻿using Makaan_Entity;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Text;
 
-namespace Makaan_DAL.Abstract
+namespace Makaan_BLL.Abstract
 {
-    public interface IRepository<T> where T:class
+    public interface IRepositoryService<T> where T : class
     {
-        List<T> GetAll(Expression<Func<T,bool>> filter);
+        List<T> GetAll(Expression<Func<T, bool>> filter = null); //i=> i.id>5
         T GetById(int id);
 
         void Create(T entity);

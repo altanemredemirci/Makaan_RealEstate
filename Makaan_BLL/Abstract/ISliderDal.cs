@@ -5,8 +5,7 @@ using System.Text;
 
 namespace Makaan_BLL.Abstract
 {
-    public interface IProductService:IRepositoryService<Product>
+    public interface ISliderDal:IRepositoryService<Slider>
     {
-      
     }
 }
