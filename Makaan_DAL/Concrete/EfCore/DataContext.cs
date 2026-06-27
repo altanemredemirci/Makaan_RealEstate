@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Makaan_DAL.Concrete.EfCore
 {
-    internal class DataContext:DbContext
+    public class DataContext:DbContext
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

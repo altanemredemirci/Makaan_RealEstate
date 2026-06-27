@@ -5,8 +5,7 @@ using System.Text;
 
 namespace Makaan_DAL.Abstract
 {
-    public interface IProductDal:IRepository<Product>
+    public interface IProductTypeDal:IRepository<ProductType>
     {
-      
     }
 }

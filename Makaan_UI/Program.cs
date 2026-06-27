@@ -16,7 +16,7 @@ namespace Makaan_UI
 
             //Dependency Injection - Bağımlılık Yönetimi
             builder.Services.AddScoped<IProductService, ProductService>();
-            builder.Services.AddScoped<IProductDal, ProductDal>();
+            builder.Services.AddScoped<IProductDal, EfCoreProductDal>();
 
 
             var app = builder.Build();
