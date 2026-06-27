@@ -21,14 +21,13 @@ namespace Makaan_Entity
         [StringLength(500)]
         public string Description { get; set; }
 
-        public decimal Price { get; set; }
-
         [StringLength(500)]
         public string Location { get; set; }
 
         [StringLength(500)]
         public string VideoUrl { get; set; }
 
+        public DateTime PublishDate { get; set; }
         public int ProductId { get; set; }
         public Product Product { get; set; }
     }

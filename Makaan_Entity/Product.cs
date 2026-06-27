@@ -29,6 +29,8 @@ namespace Makaan_Entity
         public int CityId { get; set; }
         public City City { get; set; }
 
+        public bool Status { get; set; }
+        public bool IsPopular { get; set; }
         public int ProductTypeId { get; set; }
         public ProductType ProductType { get; set; }
 

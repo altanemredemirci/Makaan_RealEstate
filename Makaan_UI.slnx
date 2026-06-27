@@ -1,4 +1,5 @@
 <Solution>
+  <Project Path="Makaan_BLL/Makaan_BLL.csproj" Id="545c86a5-bf4b-498d-8b83-4194fe47768a" />
   <Project Path="Makaan_DAL/Makaan_DAL.csproj" />
   <Project Path="Makaan_Entity/Makaan_Entity.csproj" />
   <Project Path="Makaan_UI/Makaan_UI.csproj" />

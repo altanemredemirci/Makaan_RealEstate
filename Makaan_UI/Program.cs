@@ -1,3 +1,8 @@
+using Makaan_BLL.Abstract;
+using Makaan_BLL.Concrete;
+using Makaan_DAL.Abstract;
+using Makaan_DAL.Concrete.EfCore;
+
 namespace Makaan_UI
 {
     public class Program
@@ -8,6 +13,11 @@ namespace Makaan_UI
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+
+            //Dependency Injection - Bağımlılık Yönetimi
+            builder.Services.AddScoped<IProductService, ProductService>();
+            builder.Services.AddScoped<IProductDal, ProductDal>();
+
 
             var app = builder.Build();
 

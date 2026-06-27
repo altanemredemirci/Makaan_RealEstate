@@ -9,7 +9,7 @@ namespace Makaan_Entity
     {
         public int Id { get; set; }
 
-        [StringLength(30)]
+        [StringLength(300)]
         public string Title { get; set; }
 
         [StringLength(200)]
