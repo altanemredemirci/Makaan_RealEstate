@@ -5,7 +5,8 @@ using System.Text;
 
 namespace Makaan_BLL.Abstract
 {
-    public interface IProductTypeDal:IRepositoryService<ProductType>
+    public interface IProductTypeService:IRepositoryService<ProductType>
     {
+
     }
 }

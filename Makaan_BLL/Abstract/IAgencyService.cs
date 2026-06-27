@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Makaan_BLL.Abstract
 {
-    public interface IAgencyDal:IRepositoryService<Agency>
+    public interface IAgencyService:IRepositoryService<Agency>
     {
     }
 }

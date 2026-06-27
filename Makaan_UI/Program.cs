@@ -18,6 +18,8 @@ namespace Makaan_UI
             builder.Services.AddScoped<IProductService, ProductService>();
             builder.Services.AddScoped<IProductDal, EfCoreProductDal>();
 
+            builder.Services.AddScoped<IProductTypeService, ProductTypeService>();
+            builder.Services.AddScoped<IProductTypeDal, EfCoreProductTypeDal>();
 
             var app = builder.Build();
 
