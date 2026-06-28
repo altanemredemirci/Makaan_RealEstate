@@ -21,6 +21,9 @@ namespace Makaan_UI
             builder.Services.AddScoped<IProductTypeService, ProductTypeService>();
             builder.Services.AddScoped<IProductTypeDal, EfCoreProductTypeDal>();
 
+            builder.Services.AddScoped<ISliderService, SliderService>();
+            builder.Services.AddScoped<ISliderDal, EfCoreSliderDal>();
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
