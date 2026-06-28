@@ -7,6 +7,6 @@ namespace Makaan_BLL.Abstract
 {
     public interface IProductService:IRepositoryService<Product>
     {
-      
+        List<Product> GetPopularAll();
     }
 }

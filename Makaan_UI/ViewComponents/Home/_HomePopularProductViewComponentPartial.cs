@@ -5,12 +5,12 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Makaan_UI.ViewComponents.Home
 {
-    public class _HomePropertyViewComponentPartial:ViewComponent
+    public class _HomePopularProductViewComponentPartial:ViewComponent
     {
         private readonly IProductService _productService;
         private readonly IMapper _mapper;
 
-        public _HomePropertyViewComponentPartial(IProductService productService,IMapper mapper)
+        public _HomePopularProductViewComponentPartial(IProductService productService,IMapper mapper)
         {
             _productService = productService;
             _mapper = mapper;
@@ -18,10 +18,7 @@ namespace Makaan_UI.ViewComponents.Home
 
         public IViewComponentResult Invoke()
         {
-            var products = _productService.GetAll(i=> i.Status==true);
-
-            var resultProducts = _mapper.Map<List<ResultProductDTO>>(products);
-            return View(resultProducts);
+            return View(_mapper.Map<List<ResultProductDTO>>(_productService.GetPopularAll()));
         }
     }
 }

@@ -37,6 +37,11 @@ namespace Makaan_BLL.Concrete
             throw new NotImplementedException();
         }
 
+        public List<Product> GetPopularAll()
+        {
+            return _productDal.GetPopularAll();
+        }
+
         public void Update(Product entity)
         {
             throw new NotImplementedException();

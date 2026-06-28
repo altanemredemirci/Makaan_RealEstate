@@ -2,6 +2,7 @@ using Makaan_BLL.Abstract;
 using Makaan_BLL.Concrete;
 using Makaan_DAL.Abstract;
 using Makaan_DAL.Concrete.EfCore;
+using Makaan_UI.Mapping;
 
 namespace Makaan_UI
 {
@@ -14,6 +15,9 @@ namespace Makaan_UI
             // Add services to the container.
             builder.Services.AddControllersWithViews();
 
+            builder.Services.AddAutoMapper(typeof(MapProfile));
+
+
             //Dependency Injection - Bağımlılık Yönetimi
             builder.Services.AddScoped<IProductService, ProductService>();
             builder.Services.AddScoped<IProductDal, EfCoreProductDal>();
@@ -23,6 +27,9 @@ namespace Makaan_UI
 
             builder.Services.AddScoped<ISliderService, SliderService>();
             builder.Services.AddScoped<ISliderDal, EfCoreSliderDal>();
+
+
+            
 
             var app = builder.Build();
 
