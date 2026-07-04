@@ -28,8 +28,9 @@ namespace Makaan_UI
             builder.Services.AddScoped<ISliderService, SliderService>();
             builder.Services.AddScoped<ISliderDal, EfCoreSliderDal>();
 
+            builder.Services.AddScoped<IWhoWeAreService, WhoWeAreService>();
+            builder.Services.AddScoped<IWhoWeAreDal, EfCoreWhoWeAreDal>();
 
-            
 
             var app = builder.Build();
 
