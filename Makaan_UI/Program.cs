@@ -31,6 +31,8 @@ namespace Makaan_UI
             builder.Services.AddScoped<IWhoWeAreService, WhoWeAreService>();
             builder.Services.AddScoped<IWhoWeAreDal, EfCoreWhoWeAreDal>();
 
+            builder.Services.AddScoped<IAgencyService, AgencyService>();
+            builder.Services.AddScoped<IAgencyDal, EfCoreAgencyDal>();
 
             var app = builder.Build();
 
