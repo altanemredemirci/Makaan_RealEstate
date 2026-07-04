@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Makaan_BLL.DTOs.AgencyDTO;
+using Makaan_BLL.DTOs.ClientDTO;
 using Makaan_BLL.DTOs.ProductDTO;
 using Makaan_BLL.DTOs.ProductTypeDTO;
 using Makaan_BLL.DTOs.SliderDTO;
@@ -17,6 +18,7 @@ namespace Makaan_UI.Mapping
             CreateMap<Slider, ResultSliderDTO>().ReverseMap();
             CreateMap<WhoWeAre, ResultWhoWeAreDTO>().ReverseMap();
             CreateMap<Agency, ResultAgencyDTO>().ReverseMap();
+            CreateMap<Client, ResultClientDTO>().ReverseMap();
         }
     }
 }

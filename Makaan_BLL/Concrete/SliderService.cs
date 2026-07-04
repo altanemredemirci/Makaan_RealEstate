@@ -16,29 +16,10 @@ namespace Makaan_BLL.Concrete
         {
             _sliderDal = sliderDal;
         }
-        public void Create(Slider entity)
-        {
-            throw new NotImplementedException();
-        }
 
-        public void Delete(Slider entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<Slider> GetAll(Expression<Func<Slider, bool>> filter = null)
+        public Slider GetAll(Expression<Func<Slider, bool>> filter)
         {
             return _sliderDal.GetAll(filter);
-        }
-
-        public Slider GetById(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Update(Slider entity)
-        {
-            throw new NotImplementedException();
         }
     }
 }

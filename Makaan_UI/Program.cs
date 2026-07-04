@@ -34,6 +34,10 @@ namespace Makaan_UI
             builder.Services.AddScoped<IAgencyService, AgencyService>();
             builder.Services.AddScoped<IAgencyDal, EfCoreAgencyDal>();
 
+            builder.Services.AddScoped<IClientService, ClientService>();
+            builder.Services.AddScoped<IClientDal, EfCoreClientDal>();
+
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.

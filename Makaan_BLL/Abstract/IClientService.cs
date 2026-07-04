@@ -1,13 +1,11 @@
 ﻿using Makaan_Entity;
 using System;
 using System.Collections.Generic;
-using System.Linq.Expressions;
 using System.Text;
 
 namespace Makaan_BLL.Abstract
 {
-    public interface ISliderService
+    public interface IClientService:IRepositoryService<Client>
     {
-        Slider GetAll(Expression<Func<Slider, bool>> filter);
     }
 }
