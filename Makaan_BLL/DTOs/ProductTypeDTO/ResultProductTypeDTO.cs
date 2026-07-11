@@ -16,6 +16,7 @@ namespace Makaan_BLL.DTOs.ProductTypeDTO
         [StringLength(100)]
         public string Name { get; set; }
 
+        public bool Status { get; set; }
         public List<Product> Products { get; set; }
     }
 }
