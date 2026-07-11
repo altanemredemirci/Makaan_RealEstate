@@ -16,6 +16,7 @@ namespace Makaan_UI.Mapping
         {
             CreateMap<Product, ResultProductDTO>().ReverseMap();
             CreateMap<ProductType, ResultProductTypeDTO>().ReverseMap();
+            CreateMap<ProductType, CreateProductTypeDTO>().ReverseMap();
             CreateMap<Slider, ResultSliderDTO>().ReverseMap();
             CreateMap<WhoWeAre, ResultWhoWeAreDTO>().ReverseMap();
             CreateMap<Agency, ResultAgencyDTO>().ReverseMap();
