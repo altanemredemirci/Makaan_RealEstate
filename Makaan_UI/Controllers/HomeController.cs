@@ -16,5 +16,10 @@ namespace Makaan_UI.Controllers
         {
             return View();
         }
+
+        public IActionResult Contact()
+        {
+            return View();
+        }
     }
 }

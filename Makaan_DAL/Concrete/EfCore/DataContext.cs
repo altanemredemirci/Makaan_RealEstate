@@ -23,5 +23,7 @@ namespace Makaan_DAL.Concrete.EfCore
         public DbSet<WhoWeAre> WhoWeAres { get; set; }
         public DbSet<Employment> Employments { get; set; }
         public DbSet<Client> Clients { get; set; }
+        public DbSet<Contact> Contacts { get; set; }
+        public DbSet<Mail> Mails { get; set; }
     }
 }

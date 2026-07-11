@@ -37,6 +37,8 @@ namespace Makaan_UI
             builder.Services.AddScoped<IClientService, ClientService>();
             builder.Services.AddScoped<IClientDal, EfCoreClientDal>();
 
+            builder.Services.AddScoped<IContactService, ContactService>();
+            builder.Services.AddScoped<IContactDal, EfCoreContactDal>();
 
             var app = builder.Build();
 
