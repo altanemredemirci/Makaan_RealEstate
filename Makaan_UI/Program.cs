@@ -40,6 +40,9 @@ namespace Makaan_UI
             builder.Services.AddScoped<IContactService, ContactService>();
             builder.Services.AddScoped<IContactDal, EfCoreContactDal>();
 
+            builder.Services.AddScoped<ICityService, CityService>();
+            builder.Services.AddScoped<ICityDal, EfCoreCityDal>();
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.

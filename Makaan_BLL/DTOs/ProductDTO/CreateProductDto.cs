@@ -6,10 +6,8 @@ using System.Text;
 
 namespace Makaan_BLL.DTOs.ProductDTO
 {
-    public class ResultProductDTO
+    public class CreateProductDto
     {
-        public int Id { get; set; }
-
         [StringLength(100)]
         public string Title { get; set; }
 
@@ -27,11 +25,13 @@ namespace Makaan_BLL.DTOs.ProductDTO
         [StringLength(10)]
         public string Type { get; set; }
 
+        public bool Status { get; set; }
+
+        public bool IsPopular { get; set; }
+
         public int CityId { get; set; }
         public City City { get; set; }
 
-        public bool Status { get; set; }
-        public bool IsPopular { get; set; }
         public int ProductTypeId { get; set; }
         public ProductType ProductType { get; set; }
 
