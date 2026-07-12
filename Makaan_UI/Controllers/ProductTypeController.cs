@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Makaan_BLL;
 using Makaan_BLL.Abstract;
 using Makaan_BLL.DTOs.ProductTypeDTO;
 using Makaan_Entity;
@@ -63,7 +64,7 @@ namespace Makaan_UI.Controllers
 
                 if(file.ContentType=="image/png" || file.ContentType == "image/jpg" || file.ContentType == "image/jpeg")
                 {
-                    dto.Icon = await UploadImage(file);
+                    dto.Icon = await ImageMethods.UploadImage(file);
 
                     _productTypeService.Create(_mapper.Map<ProductType>(dto));
 
@@ -111,9 +112,9 @@ namespace Makaan_UI.Controllers
             {
                 if (file != null)
                 {
-                    DeleteImage(dto.Icon);
+                    ImageMethods.DeleteImage(dto.Icon);
 
-                    dto.Icon = await UploadImage(file);
+                    dto.Icon = await ImageMethods.UploadImage(file);
                 }
 
                 _productTypeService.Update(_mapper.Map<ProductType>(dto));
@@ -146,34 +147,7 @@ namespace Makaan_UI.Controllers
             return RedirectToAction("Index");
         }
 
-        private static string GenerateUniqueFileName(string fileExtension = ".png")
-        {
-            var timeStamp = DateTime.Now.ToString("yyyyMMddHHmmssfff");
-            var uniqeuName = $"{timeStamp}{fileExtension}";
-
-            return uniqeuName;
-        }
-
-        public static async Task<string> UploadImage(IFormFile file)
-        {
-            string newFileName = GenerateUniqueFileName();
-            var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\img", newFileName);
-
-            using (var stream = new FileStream(path, FileMode.Create))
-            {
-                await file.CopyToAsync(stream);
-            }
-            return newFileName;
-        }
-
-        public static void DeleteImage(string fileName)
-        {
-            var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/img", fileName);
-            if (System.IO.File.Exists(path))
-            {
-                System.IO.File.Delete(path);
-            }
-        }
+       
 
     }
 }

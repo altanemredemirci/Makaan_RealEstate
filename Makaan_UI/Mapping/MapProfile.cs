@@ -2,6 +2,7 @@
 using Makaan_BLL.DTOs.AgencyDTO;
 using Makaan_BLL.DTOs.ClientDTO;
 using Makaan_BLL.DTOs.ContactDTO;
+using Makaan_BLL.DTOs.ProductDetailDTO;
 using Makaan_BLL.DTOs.ProductDTO;
 using Makaan_BLL.DTOs.ProductTypeDTO;
 using Makaan_BLL.DTOs.SliderDTO;
@@ -15,6 +16,7 @@ namespace Makaan_UI.Mapping
         public MapProfile()
         {
             CreateMap<Product, ResultProductDTO>().ReverseMap();
+            CreateMap<ProductDetail, CreateProductDetailDTO>().ReverseMap();
 
             CreateMap<ProductType, ResultProductTypeDTO>().ReverseMap();
             CreateMap<ProductType, CreateProductTypeDTO>().ReverseMap();

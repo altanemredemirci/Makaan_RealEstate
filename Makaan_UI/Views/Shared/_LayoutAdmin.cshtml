@@ -1,12 +1,15 @@
-﻿﻿<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
-@await Component.InvokeAsync("_AdminHeaderViewComponentPartial")
+<head>
+    @await Component.InvokeAsync("_AdminHeaderViewComponentPartial")
+</head>
+
 <body class="hold-transition sidebar-mini">
     <!-- Site wrapper -->
     <div class="wrapper">
         @await Component.InvokeAsync("_AdminNavbarViewComponentPartial")
 
-        @await Component.InvokeAsync("_AdminSidebarViewComponentPartial")       
+        @await Component.InvokeAsync("_AdminSidebarViewComponentPartial")
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
@@ -14,7 +17,7 @@
             <section class="content-header">
                 <div class="container-fluid">
 
-                 @RenderBody()
+                    @RenderBody()
 
 
                 </div><!-- /.container-fluid -->

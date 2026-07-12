@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.3.11" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Makaan_DAL\Makaan_DAL.csproj" />
     <ProjectReference Include="..\Makaan_Entity\Makaan_Entity.csproj" />
   </ItemGroup>

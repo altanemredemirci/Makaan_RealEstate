@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Makaan_BLL.DTOs.ProductDTO
 {
-    public class CreateProductDto
+    public class CreateProductDTO
     {
         [StringLength(100)]
         public string Title { get; set; }

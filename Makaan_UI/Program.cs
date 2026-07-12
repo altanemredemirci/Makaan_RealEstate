@@ -25,6 +25,9 @@ namespace Makaan_UI
             builder.Services.AddScoped<IProductTypeService, ProductTypeService>();
             builder.Services.AddScoped<IProductTypeDal, EfCoreProductTypeDal>();
 
+            builder.Services.AddScoped<IProductDetailService, ProductDetailService>();
+            builder.Services.AddScoped<IProductDetailDal, EfCoreProductDetailDal>();
+
             builder.Services.AddScoped<ISliderService, SliderService>();
             builder.Services.AddScoped<ISliderDal, EfCoreSliderDal>();
 
