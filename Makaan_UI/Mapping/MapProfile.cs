@@ -15,12 +15,19 @@ namespace Makaan_UI.Mapping
         public MapProfile()
         {
             CreateMap<Product, ResultProductDTO>().ReverseMap();
+
             CreateMap<ProductType, ResultProductTypeDTO>().ReverseMap();
             CreateMap<ProductType, CreateProductTypeDTO>().ReverseMap();
+            CreateMap<ProductType, UpdateProductTypeDTO>().ReverseMap();
+
             CreateMap<Slider, ResultSliderDTO>().ReverseMap();
+
             CreateMap<WhoWeAre, ResultWhoWeAreDTO>().ReverseMap();
+
             CreateMap<Agency, ResultAgencyDTO>().ReverseMap();
+
             CreateMap<Client, ResultClientDTO>().ReverseMap();
+
             CreateMap<Contact, ResultContactDTO>().ReverseMap();
         }
     }

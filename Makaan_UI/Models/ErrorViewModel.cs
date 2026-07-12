@@ -2,8 +2,10 @@ namespace Makaan_UI.Models
 {
     public class ErrorViewModel
     {
-        public string? RequestId { get; set; }
-
-        public bool ShowRequestId => !string.IsNullOrEmpty(RequestId);
+        public int Code { get; set; }
+        public string Title { get; set; }
+        public string Description { get; set; }
+        public string ReturnUrl { get; set; }
+        public string Css { get; set; }
     }
 }

@@ -2,6 +2,7 @@
 using Makaan_BLL.Abstract;
 using Makaan_BLL.DTOs.ProductTypeDTO;
 using Makaan_Entity;
+using Makaan_UI.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Makaan_UI.Controllers
@@ -30,12 +31,30 @@ namespace Makaan_UI.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(CreateProductTypeDTO dto, IFormFile file)
         {
             ModelState.Remove("Icon");
             ModelState.Remove("file");
             if(ModelState.IsValid)
             {
+                var productType = _productTypeService.GetAll(i => i.Name == dto.Name);
+
+                if (productType.Count>0)
+                {
+                    ErrorViewModel error = new ErrorViewModel()
+                    {
+                        Code = 101,
+                        Title = "Kayıt Hatası",
+                        Description = "Aynı isimde kayıtlı bir ilan kategorisi vardır.Lütfen farklı isim girişi yapınız.",
+                        ReturnUrl = "/ProductType/Index",
+                        Css = "text-warning"
+
+                    };
+
+                    return View("Error", error);
+                }
+
                 if (file == null)
                 {
                     ModelState.AddModelError("", "Ikon için dosya yüklenmedi");
@@ -44,15 +63,7 @@ namespace Makaan_UI.Controllers
 
                 if(file.ContentType=="image/png" || file.ContentType == "image/jpg" || file.ContentType == "image/jpeg")
                 {
-                    string newFileName = GenerateUniqueFileName();
-                    var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\img", newFileName);
-
-                    using(var stream = new FileStream(path, FileMode.Create))
-                    {
-                        await file.CopyToAsync(stream);
-                    }
-
-                    dto.Icon = newFileName;
+                    dto.Icon = await UploadImage(file);
 
                     _productTypeService.Create(_mapper.Map<ProductType>(dto));
 
@@ -69,12 +80,99 @@ namespace Makaan_UI.Controllers
             return View(dto);
         }
 
+        public IActionResult Edit(int id)
+        {
+            var productType = _productTypeService.GetById(id);
+
+            if (productType == null)
+            {
+                ErrorViewModel error = new ErrorViewModel()
+                {
+                    Code = 404,
+                    Title = "İlan Kategorisi Bulunamadı",
+                    Description = "Lütfen seçtiğiniz yapıyı tekrar kontrol ediniz",
+                    ReturnUrl = "/ProductType/Index",
+                    Css = "text-danger"
+
+                };
+
+                return View("Error", error);
+            }
+
+            return View(_mapper.Map<UpdateProductTypeDTO>(productType));
+        }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(UpdateProductTypeDTO dto,IFormFile file)
+        {
+            if (ModelState.IsValid)
+            {
+                if (file != null)
+                {
+                    DeleteImage(dto.Icon);
+
+                    dto.Icon = await UploadImage(file);
+                }
+
+                _productTypeService.Update(_mapper.Map<ProductType>(dto));
+                return RedirectToAction("Index");
+            }
+
+            return View(dto);
+        }
+
+        public IActionResult Delete(int id)
+        {
+            var productType = _productTypeService.GetById(id);
+
+            if (productType == null)
+            {
+                ErrorViewModel error = new ErrorViewModel()
+                {
+                    Code = 404,
+                    Title = "İlan Kategorisi Bulunamadı",
+                    Description = "Lütfen seçtiğiniz yapıyı tekrar kontrol ediniz",
+                    ReturnUrl = "/ProductType/Index",
+                    Css = "text-danger"
+
+                };
+
+                return View("Error", error);
+            }
+
+            _productTypeService.Delete(productType);
+            return RedirectToAction("Index");
+        }
+
         private static string GenerateUniqueFileName(string fileExtension = ".png")
         {
             var timeStamp = DateTime.Now.ToString("yyyyMMddHHmmssfff");
             var uniqeuName = $"{timeStamp}{fileExtension}";
 
             return uniqeuName;
+        }
+
+        public static async Task<string> UploadImage(IFormFile file)
+        {
+            string newFileName = GenerateUniqueFileName();
+            var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\img", newFileName);
+
+            using (var stream = new FileStream(path, FileMode.Create))
+            {
+                await file.CopyToAsync(stream);
+            }
+            return newFileName;
+        }
+
+        public static void DeleteImage(string fileName)
+        {
+            var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/img", fileName);
+            if (System.IO.File.Exists(path))
+            {
+                System.IO.File.Delete(path);
+            }
         }
 
     }
