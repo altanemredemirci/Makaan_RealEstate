@@ -80,8 +80,7 @@ namespace Makaan_UI.Controllers
 
                 dto.Product.Status = true;
                 dto.PublishDate = DateTime.Now;
-                CreateProductDTO.cs
-ProductController\Create()_productDetailService.Create(_mapper.Map<ProductDetail>(dto));
+                _productDetailService.Create(_mapper.Map<ProductDetail>(dto));
 
                 return RedirectToAction("Index");
             }
