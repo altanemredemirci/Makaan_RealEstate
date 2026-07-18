@@ -19,12 +19,12 @@ namespace Makaan_BLL.Concrete
 
         public void Create(Product entity)
         {
-            throw new NotImplementedException();
+            _productDal.Create(entity);
         }
 
         public void Delete(Product entity)
         {
-            throw new NotImplementedException();
+            _productDal.Delete(entity);
         }      
 
         public List<Product> GetAll(Expression<Func<Product, bool>> filter = null)
@@ -34,7 +34,7 @@ namespace Makaan_BLL.Concrete
 
         public Product GetById(int id)
         {
-            throw new NotImplementedException();
+            return _productDal.GetById(id);
         }
 
         public List<Product> GetPopularAll()
@@ -44,7 +44,7 @@ namespace Makaan_BLL.Concrete
 
         public void Update(Product entity)
         {
-            throw new NotImplementedException();
+            _productDal.Update(entity);
         }
     }
 }

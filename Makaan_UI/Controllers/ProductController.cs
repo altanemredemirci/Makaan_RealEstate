@@ -4,6 +4,7 @@ using Makaan_BLL.Abstract;
 using Makaan_BLL.DTOs.ProductDetailDTO;
 using Makaan_BLL.DTOs.ProductDTO;
 using Makaan_Entity;
+using Makaan_UI.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Makaan_UI.Controllers
@@ -88,6 +89,71 @@ namespace Makaan_UI.Controllers
             ViewBag.Cities = _cityService.GetAll();
             ViewBag.ProductTypes = _productTypeService.GetAll();
             ViewBag.Agencies = _agencyService.GetAll();
+            return View(dto);
+        }
+
+        public IActionResult Edit(int id)
+        {
+            var product = _productService.GetById(id);
+
+            if (product==null)
+            {
+                ErrorViewModel error = new ErrorViewModel()
+                {
+                    Code = 102,
+                    Title = "İlan Bulunamadı",
+                    Description = "Lüften varolan bir ilan seçiniz.",
+                    ReturnUrl = "/Product/Index",
+                    Css = "text-danger"
+                };
+                return View("Error", error);
+            }
+
+            var model = _mapper.Map<UpdateProductDTO>(product);
+
+            ViewBag.Cities = _cityService.GetAll();
+            ViewBag.Agencies = _agencyService.GetAll();
+            ViewBag.ProductTypes = _productTypeService.GetAll();
+
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(UpdateProductDTO dto, IFormFile file)
+        {
+            ModelState.Remove("file");
+            if (ModelState.IsValid)
+            {
+                var product = _productService.GetById(dto.Id);
+
+                if (product == null)
+                {
+                    ErrorViewModel error = new ErrorViewModel()
+                    {
+                        Code = 102,
+                        Title = "İlan Bulunamadı",
+                        Description = "Lüften varolan bir ilan seçiniz.",
+                        ReturnUrl = "/Product/Index",
+                        Css = "text-danger"
+                    };
+                    return View("Error", error);
+                }
+
+                if (file != null)
+                {
+                    ImageMethods.DeleteImage(product.CoverImage);
+                    dto.CoverImage = await ImageMethods.UploadImage(file);
+                }
+                
+                _productService.Update(_mapper.Map<Product>(dto));
+                return RedirectToAction("Index");
+            }
+
+            ViewBag.Cities = _cityService.GetAll();
+            ViewBag.Agencies = _agencyService.GetAll();
+            ViewBag.ProductTypes = _productTypeService.GetAll();
+
             return View(dto);
         }
     }

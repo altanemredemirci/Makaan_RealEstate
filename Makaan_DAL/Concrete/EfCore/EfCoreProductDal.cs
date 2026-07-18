@@ -15,7 +15,14 @@ namespace Makaan_DAL.Concrete.EfCore
         {
            using(var context = new DataContext())
             {
-                return context.Products.Where(i => i.Status).Include(i => i.ProductType).Include(i => i.City).Include(i=> i.Agency).ToList();
+                if (filter == null)
+                {
+                    return context.Products.Include(i => i.ProductType).Include(i => i.City).Include(i => i.Agency).ToList();
+                }
+                else
+                {
+                    return context.Products.Where(filter).Include(i => i.ProductType).Include(i => i.City).Include(i => i.Agency).ToList();
+                }
             }
         }
 
