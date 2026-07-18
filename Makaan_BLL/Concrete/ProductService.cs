@@ -37,6 +37,11 @@ namespace Makaan_BLL.Concrete
             return _productDal.GetById(id);
         }
 
+        public Product GetOne(Expression<Func<Product, bool>> filter = null)
+        {
+            return _productDal.GetOne(filter);
+        }
+
         public List<Product> GetPopularAll()
         {
             return _productDal.GetPopularAll();

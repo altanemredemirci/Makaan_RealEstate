@@ -36,6 +36,11 @@ namespace Makaan_BLL.Concrete
             return _productDetailDal.GetById(id);
         }
 
+        public ProductDetail GetOne(Expression<Func<ProductDetail, bool>> filter = null)
+        {
+             return _productDetailDal.GetOne(filter);
+        }
+
         public void Update(ProductDetail entity)
         {
             _productDetailDal.Update(entity);

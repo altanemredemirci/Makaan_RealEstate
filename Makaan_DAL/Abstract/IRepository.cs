@@ -9,6 +9,7 @@ namespace Makaan_DAL.Abstract
     public interface IRepository<T> where T:class
     {
         List<T> GetAll(Expression<Func<T,bool>> filter);
+        T GetOne(Expression<Func<T,bool>> filter);
         T GetById(int id);
 
         void Create(T entity);

@@ -47,6 +47,14 @@ namespace Makaan_DAL.Concrete.EfCore
             }
         }
 
+        public T GetOne(Expression<Func<T, bool>> filter)
+        {
+            using(var context = new TContext())
+            {
+                return context.Set<T>().FirstOrDefault(filter);
+            }
+        }
+
         public void Update(T entity)
         {
             using (var context = new TContext())

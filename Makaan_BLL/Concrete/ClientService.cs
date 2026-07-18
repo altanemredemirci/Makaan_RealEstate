@@ -36,6 +36,11 @@ namespace Makaan_BLL.Concrete
             return _clientDal.GetById(id);
         }
 
+        public Client GetOne(Expression<Func<Client, bool>> filter = null)
+        {
+            return _clientDal.GetOne(filter);
+        }
+
         public void Update(Client entity)
         {
             _clientDal.Update(entity);

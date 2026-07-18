@@ -30,6 +30,7 @@ namespace Makaan_UI.Mapping
             CreateMap<WhoWeAre, ResultWhoWeAreDTO>().ReverseMap();
 
             CreateMap<Agency, ResultAgencyDTO>().ReverseMap();
+            CreateMap<Agency, CreateAgencyDTO>().ReverseMap();
 
             CreateMap<Client, ResultClientDTO>().ReverseMap();
 
