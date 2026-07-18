@@ -156,5 +156,27 @@ namespace Makaan_UI.Controllers
 
             return View(dto);
         }
+
+        public IActionResult Delete(int id)
+        {
+            var product = _productService.GetById(id);
+
+            if (product == null)
+            {
+                ErrorViewModel error = new ErrorViewModel()
+                {
+                    Code = 102,
+                    Title = "İlan Bulunamadı",
+                    Description = "Lüften varolan bir ilan seçiniz.",
+                    ReturnUrl = "/Product/Index",
+                    Css = "text-danger"
+                };
+                return View("Error", error);
+            }
+
+            _productService.Delete(product);
+
+            return RedirectToAction("Index");
+        }
     }
 }
