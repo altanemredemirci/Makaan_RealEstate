@@ -37,5 +37,14 @@ namespace Makaan_DAL.Concrete.EfCore
                      : context.Sliders.Where(filter).ToList(); //filter = i=> i.Id==3
             }
         }
+
+        public void Create(Slider entity)
+        {
+            using (var context = new DataContext())
+            {
+                context.Sliders.Add(entity);
+                context.SaveChanges();
+            }
+        }
     }
 }

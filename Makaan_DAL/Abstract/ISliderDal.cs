@@ -11,5 +11,6 @@ namespace Makaan_DAL.Abstract
         List<Slider> GetAll(Expression<Func<Slider, bool>> filter);
         Slider GetOne(Expression<Func<Slider, bool>> filter);
         void Update(Slider entity);
+        void Create(Slider entity);
     }
 }

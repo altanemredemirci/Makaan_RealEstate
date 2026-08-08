@@ -32,6 +32,9 @@ namespace Makaan_BLL.Concrete
             return _sliderDal.GetAll(filter);
         }
 
-        
+        public void Create(Slider entity)
+        {
+            _sliderDal.Create(entity);
+        }
     }
 }
