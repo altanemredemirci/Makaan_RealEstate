@@ -46,6 +46,9 @@ namespace Makaan_UI
             builder.Services.AddScoped<ICityService, CityService>();
             builder.Services.AddScoped<ICityDal, EfCoreCityDal>();
 
+            builder.Services.AddScoped<IStatisticService, StatisticService>();
+            builder.Services.AddScoped<IStatisticDal, EfCoreStatisticDal>();
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
