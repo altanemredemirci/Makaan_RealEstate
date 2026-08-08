@@ -8,6 +8,9 @@ namespace Makaan_BLL.Abstract
 {
     public interface ISliderService
     {
-        Slider GetAll(Expression<Func<Slider, bool>> filter);
+        List<Slider> GetAll(Expression<Func<Slider, bool>> filter = null);
+        Slider GetOne(Expression<Func<Slider, bool>> filter = null);
+
+        void Update(Slider entity);
     }
 }

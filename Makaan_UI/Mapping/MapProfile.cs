@@ -26,11 +26,13 @@ namespace Makaan_UI.Mapping
             CreateMap<ProductType, UpdateProductTypeDTO>().ReverseMap();
 
             CreateMap<Slider, ResultSliderDTO>().ReverseMap();
+            CreateMap<Slider, UpdateSliderDTO>().ReverseMap();
 
             CreateMap<WhoWeAre, ResultWhoWeAreDTO>().ReverseMap();
 
             CreateMap<Agency, ResultAgencyDTO>().ReverseMap();
             CreateMap<Agency, CreateAgencyDTO>().ReverseMap();
+            CreateMap<Agency, UpdateAgencyDTO>().ReverseMap();
 
             CreateMap<Client, ResultClientDTO>().ReverseMap();
 
